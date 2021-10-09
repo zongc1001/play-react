@@ -7,14 +7,14 @@
  * @flow
  */
 
-import type {Dispatcher} from 'react-reconciler/src/ReactInternalTypes';
+import type { Dispatcher } from 'react-reconciler/src/ReactInternalTypes';
 import type {
   MutableSource,
   MutableSourceGetSnapshotFn,
   MutableSourceSubscribeFn,
   ReactContext,
 } from 'shared/ReactTypes';
-import type {OpaqueIDType} from 'react-reconciler/src/ReactFiberHostConfig';
+import type { OpaqueIDType } from 'react-reconciler/src/ReactFiberHostConfig';
 
 import ReactCurrentDispatcher from './ReactCurrentDispatcher';
 
@@ -27,11 +27,11 @@ function resolveDispatcher() {
     if (dispatcher === null) {
       console.error(
         'Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for' +
-          ' one of the following reasons:\n' +
-          '1. You might have mismatching versions of React and the renderer (such as React DOM)\n' +
-          '2. You might be breaking the Rules of Hooks\n' +
-          '3. You might have more than one copy of React in the same app\n' +
-          'See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.',
+        ' one of the following reasons:\n' +
+        '1. You might have mismatching versions of React and the renderer (such as React DOM)\n' +
+        '2. You might be breaking the Rules of Hooks\n' +
+        '3. You might have more than one copy of React in the same app\n' +
+        'See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.',
       );
     }
   }
@@ -58,12 +58,12 @@ export function useContext<T>(Context: ReactContext<T>): T {
       if (realContext.Consumer === Context) {
         console.error(
           'Calling useContext(Context.Consumer) is not supported, may cause bugs, and will be ' +
-            'removed in a future major release. Did you mean to call useContext(Context) instead?',
+          'removed in a future major release. Did you mean to call useContext(Context) instead?',
         );
       } else if (realContext.Provider === Context) {
         console.error(
           'Calling useContext(Context.Provider) is not supported. ' +
-            'Did you mean to call useContext(Context) instead?',
+          'Did you mean to call useContext(Context) instead?',
         );
       }
     }
@@ -87,7 +87,7 @@ export function useReducer<S, I, A>(
   return dispatcher.useReducer(reducer, initialArg, init);
 }
 
-export function useRef<T>(initialValue: T): {|current: T|} {
+export function useRef<T>(initialValue: T): {| current: T |} {
   const dispatcher = resolveDispatcher();
   return dispatcher.useRef(initialValue);
 }
@@ -125,9 +125,9 @@ export function useMemo<T>(
 }
 
 export function useImperativeHandle<T>(
-  ref: {|current: T | null|} | ((inst: T | null) => mixed) | null | void,
-  create: () => T,
-  deps: Array<mixed> | void | null,
+  ref: {| current: T | null|} | ((inst: T | null) => mixed) | null | void,
+    create: () => T,
+      deps: Array < mixed > | void | null,
 ): void {
   const dispatcher = resolveDispatcher();
   return dispatcher.useImperativeHandle(ref, create, deps);

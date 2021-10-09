@@ -451,10 +451,9 @@ export function scheduleUpdateOnFiber(
       addFiberToLanesMap(root, fiber, lane);
     }
   }
-
+  
   // Mark that the root has a pending update.
   markRootUpdated(root, lane, eventTime);
-
   if (enableProfilerTimer && enableProfilerNestedUpdateScheduledHook) {
     if (
       (executionContext & CommitContext) !== NoContext &&

@@ -1224,6 +1224,7 @@ function ChildReconciler(shouldTrackSideEffects) {
 
     // Handle object types
     if (typeof newChild === 'object' && newChild !== null) {
+      // eslint-disable-next-line default-case
       switch (newChild.$$typeof) {
         case REACT_ELEMENT_TYPE:
           return placeSingleChild(

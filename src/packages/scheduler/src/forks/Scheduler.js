@@ -229,7 +229,7 @@ function workLoop(hasTimeRemaining, initialTime) {
     }
     currentTask = peek(taskQueue);
   }
-  // Return whether there's additional work
+  // Return whether there's additional work 这里会告诉外界是不是还有工作没有完成
   if (currentTask !== null) {
     return true;
   } else {
@@ -352,6 +352,7 @@ function unstable_scheduleCallback(priorityLevel, callback, options) {
     newTask.isQueued = false;
   }
 
+  // TODO: 不需要立刻执行的进入timer队列
   if (startTime > currentTime) {
     // This is a delayed task.
     newTask.sortIndex = startTime;

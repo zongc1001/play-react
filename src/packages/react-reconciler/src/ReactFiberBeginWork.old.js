@@ -269,6 +269,7 @@ export function reconcileChildren(
   nextChildren: any,
   renderLanes: Lanes,
 ) {
+  debugger;
   if (current === null) {
     // If this is a fresh new component that hasn't been rendered yet, we
     // won't update its child set by applying minimal side-effects. Instead,
@@ -1033,6 +1034,7 @@ function updateClassComponent(
 ) {
   if (__DEV__) {
     // This is used by DevTools to force a boundary to error.
+    // eslint-disable-next-line default-case
     switch (shouldError(workInProgress)) {
       case false: {
         const instance = workInProgress.stateNode;
@@ -3391,6 +3393,7 @@ function attemptEarlyBailoutIfNoScheduledUpdate(
   // This fiber does not have any pending work. Bailout without entering
   // the begin phase. There's still some bookkeeping we that needs to be done
   // in this optimized path, mostly pushing stuff onto the stack.
+  // eslint-disable-next-line default-case
   switch (workInProgress.tag) {
     case HostRoot:
       pushHostRootContext(workInProgress);
@@ -3614,7 +3617,6 @@ function beginWork(
       );
     }
   }
-
   if (current !== null) {
     const oldProps = current.memoizedProps;
     const newProps = workInProgress.pendingProps;
@@ -3672,6 +3674,7 @@ function beginWork(
   // move this assignment out of the common path and into each branch.
   workInProgress.lanes = NoLanes;
 
+  // eslint-disable-next-line default-case
   switch (workInProgress.tag) {
     case IndeterminateComponent: {
       return mountIndeterminateComponent(

@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {REACT_MEMO_TYPE} from 'shared/ReactSymbols';
+import { REACT_MEMO_TYPE } from 'shared/ReactSymbols';
 
 import isValidElementType from 'shared/isValidElementType';
 
@@ -17,7 +17,7 @@ export function memo<Props>(
     if (!isValidElementType(type)) {
       console.error(
         'memo: The first argument must be a component. Instead ' +
-          'received: %s',
+        'received: %s',
         type === null ? 'null' : typeof type,
       );
     }
@@ -32,10 +32,10 @@ export function memo<Props>(
     Object.defineProperty(elementType, 'displayName', {
       enumerable: false,
       configurable: true,
-      get: function() {
+      get: function () {
         return ownName;
       },
-      set: function(name) {
+      set: function (name) {
         ownName = name;
 
         // The inner component shouldn't inherit this display name in most cases,
